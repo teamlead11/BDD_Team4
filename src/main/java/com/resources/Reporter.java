@@ -132,7 +132,7 @@ public class Reporter {
      * @throws IOException Exception if imagePath is erroneous
      */
     public static void addScreenCast(String screenCastPath) throws IOException {
-        getCurrentStep().addScreencastFromPath(screenCastPath);
+        getCurrentStep().addScreenCaptureFromPath(screenCastPath);
     }
 
     /**
