@@ -12,8 +12,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/com/Login/flipkart.feature",glue = { "com.stepdefinition" }, plugin = {
-		"com.resources.ExtentCucumberFormatter:" })
+@CucumberOptions(features = "C:\\Users\\Vishnu_26\\Desktop\\EclipseBDD\\BDD_Team4\\src\\test\\resources\\com\\Login\\amazon.feature",glue = { "com.stepdefinition" })
 
 public class TestRunner {
 

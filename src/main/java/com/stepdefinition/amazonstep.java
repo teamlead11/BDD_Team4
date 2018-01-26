@@ -1,5 +1,7 @@
 package com.stepdefinition;
 
+import java.util.concurrent.TimeUnit;
+
 import com.ObjectRepository.amazon;
 import com.resources.FunctionalLibrary;
 
@@ -10,33 +12,30 @@ import cucumber.api.java.en.When;
 public class amazonstep extends FunctionalLibrary {
 
 	@Given("^I am on Amazon page$")
-	public void i_am_on_Amazon_page() throws Throwable {
+	public void i_am_on_Amazon_Page() throws Throwable {
+		driverInit();
 		driver.get("https://www.amazon.in");
 	}
 
 	@When("^Searching the product to add in cart$")
-	public void searching_the_product_to_add_in_cart() throws Throwable {
-		amazon a = new amazon();
-		setText(a.getTxtSearch(), "oneplus 5T");
-		click(a.getBtnSearch());
-		click(a.getIphoneX());
-		click(a.getAddToCart());
-		click(a.getCartCheckout());
+	public void i_Insert_the_text_Search() throws Throwable {
+		amazon amz = new amazon();
+		amz.InputTxtValue(amz.getTxtSearch(), "iphone x");
+		amz.clickopt(amz.getBtnSearch());
+		// amz.clickopt(amz.getIphoneX());
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		// amz.clickopt(amz.getBtnAddToCart());
+		amz.GetWindowHandel();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		amz.clickopt(amz.getBtnCartCheckout());
 
-	}
-
-	@When("^Deleting the product based on name$")
-	public void deleting_the_product_based_on_name() throws Throwable {
-		amazon a = new amazon();
-		a.deleteBasedOnName("Apple iPhone X (Space Grey, 64GB)");
-	
+		amz.DeleteBasedOnPrice("Apple iPhone X (Space Grey, 64GB)");
 	}
 
 	@Then("^Verify the correct product is deleted$")
-	public void verify_the_correct_product_is_deleted() throws Throwable {
-		amazon a = new amazon();
-		System.out.println(a.getListingProductCount().size());
-
+	public void i_verify_the_Product_Price() throws Throwable {
+		amazon amz = new amazon();
+		System.out.println(amz.getListingProductCount().size());
 	}
 
 }
